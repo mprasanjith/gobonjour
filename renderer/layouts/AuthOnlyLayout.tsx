@@ -12,10 +12,6 @@ const AuthOnlyLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
     }
   }, [isConnected]);
 
-  if (!isConnected) {
-    return null;
-  }
-
   return <>{children}</>;
 };
 

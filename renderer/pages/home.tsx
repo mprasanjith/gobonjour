@@ -76,13 +76,13 @@ const pieEmojiAnimation = {
   },
 };
 
-export function BouncingSafeEmoji() {
+export function BouncingPieEmoji() {
   return (
     <motion.span
       animate={pieEmojiAnimation}
       style={{ display: "inline-block" }}
     >
-      🔒
+      🥧
     </motion.span>
   );
 }
@@ -113,9 +113,13 @@ export function Landing() {
 
   useEffect(() => {
     if (isConnected) {
-      router.replace("/apps");
+      router.replace("/app");
     }
   }, [isConnected]);
+
+  if (!isConnected) {
+    return null;
+  }
 
   return (
     <div className={classes.wrapper}>
@@ -126,7 +130,7 @@ export function Landing() {
             Crypto
           </Text>{" "}
           <br />
-          in a <BouncingSafeEmoji /> safe environment.
+          in a <BouncingPieEmoji /> safe environment.
         </h1>
         <Text className={classes.description} color="dimmed">
           We simplify crypto for everyone, while keeping it safe and secure.
