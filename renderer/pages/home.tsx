@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { createStyles, Container, Text, Group, rem } from "@mantine/core";
 import { ConnectKitButton } from "connectkit";
+import { useAccount } from "wagmi";
+import { useRouter } from "next/router";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -106,13 +108,20 @@ export function ShakingMoneyEmoji() {
 
 export function Landing() {
   const { classes } = useStyles();
+  const { isConnected } = useAccount();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isConnected) {
+      router.replace("/apps");
+    }
+  }, [isConnected]);
 
   return (
     <div className={classes.wrapper}>
       <Container className={classes.inner}>
         <h1 className={classes.title}>
-          Interact with {" "}
-          <ShakingMoneyEmoji />{" "}
+          Interact with <ShakingMoneyEmoji />{" "}
           <Text component="span" variant="gradient" inherit>
             Crypto
           </Text>{" "}

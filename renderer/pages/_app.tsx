@@ -1,4 +1,4 @@
-import { WagmiConfig, createConfig } from "wagmi";
+import { WagmiConfig, createConfig, useAccount } from "wagmi";
 import {
   ConnectKitProvider,
   ConnectKitButton,
@@ -9,6 +9,8 @@ import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 const alchemyId = process.env.NEXT_PUBLIC_ALCHEMY_ID;
 if (!alchemyId) {
@@ -48,6 +50,7 @@ const config = createConfig(
     // appIcon: "https://gobonjour.com/logo.png", // your app's icon, no bigger than 1024x1024px (max. 1MB)
 
     connectors: [coinbaseWallet, walletConnect],
+    autoConnect: true,
   })
 );
 
