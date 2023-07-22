@@ -76,13 +76,13 @@ const pieEmojiAnimation = {
   },
 };
 
-export function BouncingPieEmoji() {
+export function BouncingSafeEmoji() {
   return (
     <motion.span
       animate={pieEmojiAnimation}
       style={{ display: "inline-block" }}
     >
-      🥧
+      🔒
     </motion.span>
   );
 }
@@ -126,7 +126,7 @@ export function Landing() {
             Crypto
           </Text>{" "}
           <br />
-          in a <BouncingPieEmoji /> safe environment.
+          in a <BouncingSafeEmoji /> safe environment.
         </h1>
         <Text className={classes.description} color="dimmed">
           We simplify crypto for everyone, while keeping it safe and secure.
