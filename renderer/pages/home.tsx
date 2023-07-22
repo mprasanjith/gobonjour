@@ -1,14 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  createStyles,
-  Container,
-  Text,
-  Button,
-  Group,
-  rem,
-} from "@mantine/core";
-import Link from "next/link";
+import { createStyles, Container, Text, Group, rem } from "@mantine/core";
+import { ConnectKitButton } from "connectkit";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -19,14 +12,12 @@ const useStyles = createStyles((theme) => ({
   },
 
   inner: {
-    position: "relative",
-    paddingTop: rem(200),
-    paddingBottom: rem(120),
-
-    [theme.fn.smallerThan("sm")]: {
-      paddingBottom: rem(80),
-      paddingTop: rem(80),
-    },
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
   },
 
   title: {
@@ -118,9 +109,9 @@ export function Landing() {
 
   return (
     <div className={classes.wrapper}>
-      <Container size={700} className={classes.inner}>
+      <Container className={classes.inner}>
         <h1 className={classes.title}>
-          Interact with <br />
+          Interact with {" "}
           <ShakingMoneyEmoji />{" "}
           <Text component="span" variant="gradient" inherit>
             Crypto
@@ -132,11 +123,7 @@ export function Landing() {
           We simplify crypto for everyone, while keeping it safe and secure.
         </Text>
         <Group className={classes.controls}>
-          <Link href="/onboard">
-            <Button size="xl" className={classes.control} variant="gradient">
-              Get started
-            </Button>
-          </Link>
+          <ConnectKitButton theme="rounded" />
         </Group>
       </Container>
     </div>
